@@ -1,0 +1,11 @@
+# Entorno Virtual
+
+venv/
+
+# Base de datos
+
+db.sqlite3
+
+# Caché
+
+__pycache__

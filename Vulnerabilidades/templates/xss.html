@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Sidebar Styles */
+        .sidebar {
+            width: 200px;
+            background-color: #343a40;
+            color: white;
+            position: fixed;
+            height: 100%;
+            padding: 1rem;
+        }
+        .sidebar .nav-link {
+            color: white;
+        }
+        .sidebar .nav-link.active {
+            background-color: #495057;
+            font-weight: bold;
+        }
+        .sidebar .nav-link:hover {
+            background-color: #495057;
+        }
+        /* Content styling */
+        .content {
+            margin-left: 220px;
+            padding: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar d-flex flex-column">
+        <div class="navbar-brand mb-4">
+            <a href="/">
+                <img src="{% static 'img/Logo.png' %}" alt="Logo NetSecure" class="bd-placeholder-img" width="60px" height="60px">
+            </a>
+        </div>
+        <ul class="nav flex-column">
+            <li class="nav-item mb-2">
+                <a href="/perfil/" class="nav-link">Panel</a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="/nuevo_escaneo/" class="nav-link active">Nuevo Escaneo</a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="/recomendaciones/" class="nav-link">Recomendaciones</a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item mt-auto">
+                <a href="/cerrar_sesion/" class="nav-link">Cerrar Sesión</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        {% if reporte %}
+            <h2>Resultado del escaneo XSS</h2>
+            <p><strong>Vulnerabilidad:</strong> {{ reporte.vulnerabilidad }}</p>
+            <pre>{{ reporte.detalles }}</pre>
+            <h3>Recomendaciones:</h3>
+            <ul>
+                {% for recomendacion in reporte.recomendaciones %}
+                    <li>{{ recomendacion }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <h2>Nuevo Escaneo XSS</h2>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="url" class="form-label">URL a escanear</label>
+                    <input type="url" class="form-control" id="url" name="url" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Escanear</button>
+            </form>
+        {% endif %}
+    </div>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</body>
+</html>

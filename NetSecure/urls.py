@@ -40,4 +40,5 @@ urlpatterns = [
     path('perfil/', ingresar_views.perfil, name='Perfil'),
     path('nuevo_escaneo/', ingresar_views.nuevo_escaneo, name='Nuevo Escaneo'),
     path('sql_injection/', Vulnerabilidades_views.sql_injection, name='Vulnerabilidad SQLI'),
+    path('xss/', Vulnerabilidades_views.xss, name='Vulnerabilidad XSS'),
 ]

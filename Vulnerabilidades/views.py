@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 import requests
+import subprocess
 
 # Create your views here.
 
@@ -11,55 +12,55 @@ def sql_injection(request):
     if request.method == 'POST':
         url = request.POST.get('url')
 
-        # Realizamos la prueba de SQL Injection y generamos un reporte
-        reporte = generar_reporte_sql_injection(url)
+        reporte = ejecutar_sqlmap(url)
 
-        # Renderizamos la página con el reporte del escaneo
         return render(request, 'sql_injection.html', {'reporte': reporte})
 
     return render(request, 'sql_injection.html')
 
-def generar_reporte_sql_injection(url):
-    reporte = {}
-    detalles = []
-    
-    try:
-        # Simulación de prueba con payload de SQL Injection
-        payload = "' OR 1=1 --"
-        response = requests.get(f"{url}?input={payload}")
 
-        # Si encontramos algún mensaje de error que podría indicar una vulnerabilidad
-        if "error" in response.text or "syntax" in response.text:
-            reporte['vulnerabilidad'] = "¡Vulnerabilidad detectada! La URL es susceptible a SQL Injection."
-            detalles.append(f"Payload utilizado: {payload}")
-            detalles.append(f"Respuesta del servidor: {response.text[:500]}... (limitado a 500 caracteres)")
-            
-            # Generamos recomendaciones para mitigar el SQLi
-            recomendaciones = [
-                "Usar consultas preparadas (Prepared Statements) para evitar la inyección SQL.",
-                "Validar y sanitizar todos los datos de entrada del usuario.",
-                "Restringir los permisos de la base de datos para que solo las operaciones necesarias sean permitidas.",
-                "Configurar políticas de seguridad y monitorear el tráfico de red para detectar actividad sospechosa.",
-                "Realizar pruebas periódicas de seguridad con herramientas automáticas y manuales."
-            ]
-            reporte['recomendaciones'] = recomendaciones
+def ejecutar_sqlmap(url):
+    sqlmap_path = "/sqlmap-dev/sqlmap.py"  
+
+    command = ["python3", sqlmap_path, "-u", url, "--batch", "--risk=1", "--level=2", "--output-dir=/tmp/sqlmap_output"]
+
+    try:
+        # Ejecutar el comando
+        process = subprocess.run(command, capture_output=True, text=True, timeout=300)
+        output = process.stdout  # Captura el resultado del escaneo
+
+        # Parsear el resultado del escaneo
+        if "is vulnerable" in output:
+            vulnerabilidad = "¡La URL es vulnerable a SQL Injection!"
         else:
-            reporte['vulnerabilidad'] = "No se detectaron vulnerabilidades de SQL Injection en la URL proporcionada."
-            detalles.append(f"Payload utilizado: {payload}")
-            detalles.append("No se encontraron patrones de error en la respuesta del servidor.")
-            reporte['recomendaciones'] = [
-                "Mantener buenas prácticas de desarrollo seguro.",
-                "Continuar con el monitoreo regular de vulnerabilidades.",
-                "Actualizar las políticas de seguridad según sea necesario."
+            vulnerabilidad = "La URL no parece ser vulnerable a SQL Injection."
+
+        # Retornar un reporte con el resultado y el output del escaneo
+        reporte = {
+            'vulnerabilidad': vulnerabilidad,
+            'detalles': output,
+            'recomendaciones': [
+                "Usar consultas preparadas (Prepared Statements).",
+                "Validar y sanitizar entradas del usuario.",
+                "Implementar políticas de control de acceso adecuadas.",
+                "Realizar pruebas de seguridad regularmente."
             ]
-        
-        reporte['detalles'] = "\n".join(detalles)
+        }
+
+    except subprocess.TimeoutExpired:
+        reporte = {
+            'vulnerabilidad': "El escaneo ha excedido el tiempo límite.",
+            'detalles': "Intenta nuevamente más tarde o con otra URL.",
+            'recomendaciones': []
+        }
 
     except Exception as e:
-        reporte['vulnerabilidad'] = "Error al realizar el escaneo."
-        reporte['detalles'] = f"Error: {str(e)}"
-        reporte['recomendaciones'] = ["Revisa la URL proporcionada o los permisos del servidor."]
-    
+        reporte = {
+            'vulnerabilidad': "Error durante el escaneo.",
+            'detalles': str(e),
+            'recomendaciones': []
+        }
+
     return reporte
 
 @login_required

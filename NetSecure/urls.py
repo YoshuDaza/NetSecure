@@ -28,6 +28,7 @@ urlpatterns = [
     path('', Inicio_views.inicio, name='Inicio'),
     path('servicios/', servicios_views.servicios, name='Servicios'),
     path('sobre-nosotros/', sobre_nosotros_views.sobre_nosotros, name='Sobre Nosotros'),
+    path('contactanos/', sobre_nosotros_views.contactanos, name='Contactanos'),
     path('blog/', blog_views.blog, name='blog'),
     
     # Rutas relacionadas con la autenticación

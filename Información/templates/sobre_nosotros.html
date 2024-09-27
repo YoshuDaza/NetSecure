@@ -1,19 +1,177 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <title>Sobre Nosotros</title>
-</head>
-<body>
-    
-</body>
+{% load static %}
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+  <head><script src="/docs/5.3/assets/js/color-modes.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <body style="background-color: #0F3460; color: #FAF7F0;" >
+        <main>
+
+            <section class="py-5 text-center container">
+                <div class="row py-lg-3">
+                    <div class="col-lg-6 col-md-8 mx-auto">
+                        <h1 class="fw-light">Sobre NetSecure</h1>
+                        <p style="color: #FCFAEE;">Protegemos los activos digitales de las empresas mediante soluciones 
+                            avanzadas de ciberseguridad, garantizando la seguridad, privacidad y continuidad operativa frente 
+                            a amenazas cibernéticas emergentes.</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="container marketing">
+                <hr class="featurette-divider">    
+                <div class="row featurette">
+                    <div class="col-md-7">
+                    <h2 class="featurette-heading fw-normal lh-1">NetSecure</h2>
+                    <p class="lead">Fundada en 2024, NetSecure nació con el porpósito de brindar soluciones de seguridad digital innovadoras y efectivas
+                        para pequeñas y grandes empresas. Desde nuestros inicios, hemos ayudado a cientos de clientes a asegurar su
+                        infraestructura tecnológica, ofreciendo servicios de calidad, soporte personalizado y un enfoque proactivo en la prevención de ciberataques</p>
+                    <p class="lead">Nuestra misión es clara: Proteger tu negocio en un mundo digital cada vez más interconectado y vulnerable. Con una amplia
+                        gama de servicios, desde análisis de vulnerabilidades hasta monitoreo continuo, NetSecure es el aliado perfecto para mantener la integridad de tus sistemas.</p>
+                    </div>
+                    <div class="col-md-5 order-md-1">
+                        <img src="{% static '/img/netsecure-historia.webp' %}" alt="NetSecureH" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="400" height="400" style="border-radius: 40px; box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.3);">
+                    </div>
+                </div>
+            </div>
+
+                <div class="album py-5">
+                    <div class="container">
+                        <hr class="featurette-divider">
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3">
+                            <div class="col">
+                                <div class="card shadow-sm">
+                                    
+                                    <div class="card-body">
+                                            <h4 class="card-text">Visión</h4>
+                                            <p class="card-text">Nuestra visión es convertirnos en los líderes mundiales en ciberseguridad, siendo 
+                                                reconocidos por nuestro enfoque basado en la innovación continua y el uso avanzado de la inteligencia 
+                                                artificial para prevenir y mitigar las amenazas cibernéticas. Aspiramos a establecer un estándar global 
+                                                en protección digital, brindando soluciones proactivas que anticipen las vulnerabilidades del futuro.</p>
+                                        <div class="d-flex justify-content-between align-items-center"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card shadow-sm">
+                                    <div class="card-body">
+                                        <h4 class="card-text">Misión</h4>
+                                        <p class="card-text">Empoderar a las empresas para operar con confianza en un 
+                                            entorno digital cada vez más complejo y desafiante. Desarrollamos soluciones de ciberseguridad que no solo 
+                                            protegen la integridad, confidencialidad y disponibilidad de los datos críticos, sino que también permiten 
+                                            a nuestros clientes concentrarse en la innovación y el crecimiento de sus negocios sin preocuparse por las 
+                                            amenazas cibernéticas.</p>
+                                        <div class="d-flex justify-content-between align-items-center"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="featurette-divider">
+                    </div>
+                </div>
+
+            <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel" style="background-color: #1A1A2E;">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <svg class="bd-placeholder-img" width="100%" height="310px" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+                        <div class="container">
+                            <div class="carousel-caption ">
+                                <h1>Innovación continua</h1>
+                                <p class="opacity-75">Creemos que el cambio es la única constante en el mundo digital. Por eso, nos dedicamos 
+                                    a desarrollar nuevas tecnologías que mantengan a nuestros clientes siempre un paso por delante de las amenazas 
+                                    cibernéticas.</p>
+                                <p>________________</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <svg class="bd-placeholder-img" width="100%" height="310px" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h1>Responsabilidad Social</h1>
+                                <p>Entendemos que la ciberseguridad no solo es un tema empresarial, sino también una cuestión social. 
+                                    Nos comprometemos a participar en iniciativas de responsabilidad social para educar a las nuevas 
+                                    generaciones sobre la importancia de la seguridad digital.</p>
+                                <p>________________</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <svg class="bd-placeholder-img" width="100%" height="310px" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h1>Excelencia en el servicio</h1>
+                                <p>Nuestro objetivo es superar siempre las expectativas de nuestros clientes. Nos esforzamos por ofrecer no 
+                                    solo soluciones, sino también una atención personalizada y adaptada a cada necesidad.</p>
+                                <p>________________</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
+            <div class="container marketing" style="margin-top: 40px;">      
+                <div class="row featurette">
+                    <div class="col-md-7 order-md-2">
+                        <h2 class="featurette-heading fw-normal lh-1" style="text-align: center;">Auditorías</h2>
+                        <p>En nuestras auditorías de ciberseguridad para otras empresas, llevamos a cabo un análisis exhaustivo 
+                            de sus infraestructuras tecnológicas, examinando la seguridad de sus redes, aplicaciones y sistemas frente 
+                            a posibles vulnerabilidades y amenazas. Implementamos metodologías avanzadas para evaluar la exposición a 
+                            riesgos cibernéticos, desde fallos en la gestión de accesos y la protección de datos sensibles hasta debilidades 
+                            en las configuraciones de seguridad.</p>
+                        <p>Además, nuestras auditorías no solo identifican las áreas críticas a mejorar, sino que también ofrecen 
+                            recomendaciones personalizadas para implementar controles más robustos. Esto permite a las empresas 
+                            optimizar sus prácticas de seguridad, minimizar riesgos de brechas de datos y garantizar una operación 
+                            sin interrupciones, protegiendo su continuidad y reputación en el entorno digital. </p>
+                    </div>
+                    <div class="col-md-5 order-md-1">
+                        <img src="{% static '/img/auditorias.webp' %}" alt="Imagen de seguridad" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="350" height="350" style="border-radius: 40px; box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.3);">
+                    </div>
+                </div>
+            </div>
+            <div class="container marketing" style="margin-top: 40px; text-align: center;">
+                
+                <div>
+                    <hr class="featurette-divider">
+                    <h2 style="text-align: center; margin-top: 20px;">Nuestro equipo </h2>
+                    <div class="container marketing" style="margin-top: 25px">
+                        <hr class="featurette-divider">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                {% comment %} Foto de perfil {% endcomment %}
+                                <img src="{% static '/img/facil-uso.webp' %}" alt="Seguridad informática" class="bd-placeholder-img rounded-circle" width="140" height="140">
+                                <h2 class="fw-normal">Yoshu Steban Daza</h2>
+                                <p>Estudiante de Ingeniería de Software y ciberseguridad</p>
+                            </div><!-- /.col-lg-4 -->
+                            <div class="col-lg-4">
+                                <img src="{% static '/img/perfil-juan.webp' %}" alt="Seguridad informática" class="bd-placeholder-img rounded-circle" width="140" height="140">
+                                <h2 class="fw-normal">Juan Esteban Sierra</h2>
+                                <p>Estudiante de Ingeniería de Software</p>
+                            </div><!-- /.col-lg-4 -->
+                        </div><!-- /.row -->
+                    </div>
+                </div>
+            </div>
+        </main>
+        <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    </body>
 </html>
 {% endblock %}
-
-<h1>Sobre Nosotros</h1>

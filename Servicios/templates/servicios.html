@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,16 +11,16 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <title>Servicios</title>
 
-    <body clas="bg-light">
+    <body style="background-color: #0F3460; color: aliceblue;">
 
      <!-- Contenido principal -->
-     <div class="container py-5">
-        <h2 class="text-start text-primary mb-5">Nuestros Servicios</h2>
+     <div class="container py-3">
+        <h2 class="text-start text-tertiary mb-4">Nuestros Servicios</h2>
         <div class="row g-4">
             <!-- Tarjeta de Escaneo de Vulnerabilidades -->
             <div class="col-lg-8">
-                <div class="card bg-dark text-white h-100">
-                    <img src="https://via.placeholder.com/500x300.png?text=Escaneo+de+Vulnerabilidades" class="card-img" alt="Escaneo de Vulnerabilidades">
+                <div class="card bg-dark text-white">
+                    <img src="{% static '/img/escaneo-vulnerabilidad.webp' %}" alt="Seguridad informática" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto opacity-50" width="723" height="700" style="border-radius: 40px; box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.3);">
                     <div class="card-img-overlay d-flex align-items-center justify-content-center">
                         <h3 class="card-title">Escaneo de Vulnerabilidades</h3>
                     </div>
@@ -29,7 +30,7 @@
             <!-- Tarjeta de Protección de Datos -->
             <div class="col-lg-4">
                 <div class="card bg-dark text-white h-100">
-                    <img src="https://via.placeholder.com/350x150.png?text=Cómo+evitar+el+phishing" class="card-img" alt="Protección de datos">
+                    <img src="{% static '/img/phishing.webp' %}" alt="Seguridad informática" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto opacity-50" width="700" height="1200" style="border-radius: 40px; box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.3);">
                     <div class="card-img-overlay d-flex align-items-center justify-content-center">
                         <h3 class="card-title">Cómo evitar el phishing</h3>
                     </div>
@@ -37,26 +38,21 @@
             </div>
 
             <!-- Tarjeta de Auditorías -->
-            <div class="col-lg-4">
+            <div class="col-lg-5">
                 <div class="card bg-dark text-white h-100">
-                    <img src="https://via.placeholder.com/350x150.png?text=Auditorías" class="card-img" alt="Auditorías">
+                    <img src="{% static '/img/servicios-au.jpg' %}" alt="Seguridad informática" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto opacity-50" width="600" height="700" style="border-radius: 40px; box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.3);">
                     <div class="card-img-overlay d-flex align-items-center justify-content-center">
                         <h3 class="card-title">Auditorías</h3>
                     </div>
                 </div>
             </div>
-
-            <!-- CTA: Descubre más de nuestros servicios -->
-            <div class="col-lg-4">
-                <div class="card bg-secondary text-white h-100 d-flex align-items-center justify-content-center">
-                    <h3 class="card-title">¿Estás bajo un ataque?</h3>
-                </div>
-            </div>
-
             <!-- CTA: Las últimas noticias sobre ciberseguridad -->
-            <div class="col-lg-4">
-                <div class="card bg-secondary text-white h-100 d-flex align-items-center justify-content-center">
-                    <h3 class="card-title">Las últimas noticias sobre ciberseguridad</h3>
+            <div class="col-lg-7">
+                <div class="card bg-dark text-white h-100">
+                    <img src="{% static '/img/servicios-not.webp' %}" alt="Seguridad informática" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto opacity-50" width="550" height="900" style="border-radius: 40px; box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.3);">
+                    <div class="card-img-overlay d-flex align-items-center justify-content-center">
+                        <h3 class="card-title">Últimas noticias sobre ciberseguridad</h3>
+                    </div>
                 </div>
             </div>
         </div>
